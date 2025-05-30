@@ -2,12 +2,12 @@ steps:
   - name: docker-build-push-fpm
     image: woodpeckerci/plugin-docker-buildx
     settings:
-      repo: registry.digitalocean.com/${CI_REPO_OWNER}/${CI_REPO_NAME}
+      repo: registry.digitalocean.com/${CI_REPO_OWNER}/${CI_REPO_NAME}-fpm
       registry: registry.digitalocean.com
       target: fpm
       tags: 
-        - ${CI_COMMIT_SHA}-fpm
-        - ${CI_COMMIT_TAG}-fpm
+        - ${CI_COMMIT_SHA}
+        - ${CI_COMMIT_TAG}
         - latest-fpm
       dry-run: false
       username:
@@ -27,12 +27,12 @@ steps:
   - name: docker-build-push-web
     image: woodpeckerci/plugin-docker-buildx
     settings:
-      repo: registry.digitalocean.com/${CI_REPO_OWNER}/${CI_REPO_NAME}
+      repo: registry.digitalocean.com/${CI_REPO_OWNER}/${CI_REPO_NAME}-web
       registry: registry.digitalocean.com
       target: web
       tags: 
-        - ${CI_COMMIT_SHA}-web
-        - ${CI_COMMIT_TAG}-web
+        - ${CI_COMMIT_SHA}
+        - ${CI_COMMIT_TAG}
         - latest-web
       dry-run: false
       username:
