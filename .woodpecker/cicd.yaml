@@ -92,10 +92,10 @@ steps:
         apk update && apk add jq
         export REGISTRY="registry.digitalocean.com/hydraship"
         export IMAGE_NAME=${CI_REPO_NAME}:${CI_COMMIT_SHA}
-        echo "Checking if image exists ${CI_REPO_NAME}:${CI_COMMIT_SHA}"
-        EXISTS=$(/app/doctl registry repository list-manifests ${CI_REPO_NAME} --output json | jq --arg image_tag "${CI_COMMIT_SHA}" '[.[] | select(.tags[]? == $image_tag)] | length')
+        echo "Checking if image exists ${CI_REPO_NAME}-fpm:${CI_COMMIT_SHA}"
+        EXISTS=$(/app/doctl registry repository list-manifests ${CI_REPO_NAME}-fpm --output json | jq --arg image_tag "${CI_COMMIT_SHA}" '[.[] | select(.tags[]? == $image_tag)] | length')
         if [ "$EXISTS" -eq "0" ]; then
-          echo "Image does not exist: ${CI_REPO_NAME}:${CI_COMMIT_SHA}. Trigger dev pipeline first to build the image."
+          echo "Image does not exist: ${CI_REPO_NAME}-fpm:${CI_COMMIT_SHA}. Trigger dev pipeline first to build the image."
           exit 1
         else
           echo "Image exists: ${CI_REPO_NAME}:${CI_COMMIT_SHA}"
