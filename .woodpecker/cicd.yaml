@@ -120,8 +120,8 @@ steps:
         git clone git@github.com:hydraship/infra.git
         cd infra
         git checkout main
-        yq eval -i ".standard-app.apps.bagisto.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/${CI_REPO_NAME}/prod.values.yaml"
-        yq eval -i ".standard-app.apps.bagisto-web.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/${CI_REPO_NAME}/prod.values.yaml"
+        yq eval -i ".standard-app.apps.bagisto.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/${CI_REPO_NAME}/values.yaml"
+        yq eval -i ".standard-app.apps.bagisto-web.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/${CI_REPO_NAME}/values.yaml"
         git config --global user.email "engineering@hydraship.com"
         git config --global user.name "WoodperckerCl[bot]"
         git add "kubernetes/helm/apps/${CI_REPO_NAME}/prod.values.yaml"
