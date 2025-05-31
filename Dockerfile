@@ -1,4 +1,4 @@
-FROM serversideup/php:8.4-fpm AS base
+FROM serversideup/php:8.3-fpm AS base
 
 USER root
 
@@ -7,7 +7,7 @@ RUN install-php-extensions intl gd bcmath calendar exif gmp
 USER www-data
 
 # Composer install
-FROM registry.digitalocean.com/hydraship/bagisto:php-8.4-4-base AS composer
+FROM registry.digitalocean.com/hydraship/bagisto:php-8.3-4-base AS composer
 
 COPY composer.json composer.lock ./
 
@@ -31,7 +31,7 @@ RUN npm install && npm run build
 
 # Backend
 
-FROM registry.digitalocean.com/hydraship/bagisto:php-8.4-4-base AS fpm
+FROM registry.digitalocean.com/hydraship/bagisto:php-8.3-4-base AS fpm
 
 ENV PHP_OPCACHE_ENABLE=1
 ENV PHP_MEMORY_LIMIT=2048M
