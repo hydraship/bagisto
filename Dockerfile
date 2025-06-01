@@ -58,11 +58,4 @@ COPY --from=fpm /var/www/html/public /var/www/html/public
 # Set proper permissions
 RUN chown -R 1001:1001 /var/www/html
 
-# Configure nginx if needed (optional)
-# COPY docker/nginx/default.conf /etc/nginx/conf.d/defaul
-
-# Create symlinks for access and error logs
-RUN ln -sf /dev/stdout  /var/log/nginx/access.log \
- && ln -sf /dev/stderr  /var/log/nginx/error.log
-
 USER 1001
