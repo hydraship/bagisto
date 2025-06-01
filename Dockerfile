@@ -9,13 +9,14 @@ USER www-data
 # Composer install
 FROM registry.digitalocean.com/hydraship/bagisto:php-8.3-1-base AS composer
 
-COPY composer.json composer.lock ./
+# COPY composer.json composer.lock ./
 
-RUN composer install --no-dev --no-scripts --optimize-autoloader --prefer-dist
+# RUN composer install --no-dev --no-scripts --optimize-autoloader --prefer-dist
 
 COPY --chown=www-data:www-data . .
 
-RUN composer install --no-dev --prefer-dist
+RUN composer install
+# RUN composer install --no-dev --prefer-dist
 
 # Frontend
 
