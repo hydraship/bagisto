@@ -56,7 +56,7 @@ RUN mkdir -p /var/www/html
 COPY --from=fpm /var/www/html/public /var/www/html/public
 
 # Set proper permissions
-RUN chown -R nginx:nginx /var/www/html
+RUN chown -R 1001:1001 /var/www/html
 
 # Configure nginx if needed (optional)
 # COPY docker/nginx/default.conf /etc/nginx/conf.d/defaul
