@@ -45,7 +45,7 @@ COPY --from=composer /var/www/html /var/www/html
 COPY --from=frontend /var/www/html/public/build /var/www/html/public/build
 
 # Web server stage
-FROM nginx:1.27.5-alpine AS web
+FROM docker.io/bitnami/nginx:1.28.0-debian-12-r3 AS web
 
 # Create directory structure
 RUN mkdir -p /var/www/html
