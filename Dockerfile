@@ -47,6 +47,8 @@ COPY --from=frontend /var/www/html/public/build /var/www/html/public/build
 # Web server stage
 FROM docker.io/bitnami/nginx:1.28.0-debian-12-r3 AS web
 
+USER 0
+
 # Create directory structure
 RUN mkdir -p /var/www/html
 
@@ -62,3 +64,5 @@ RUN chown -R nginx:nginx /var/www/html
 # Create symlinks for access and error logs
 RUN ln -sf /dev/stdout  /var/log/nginx/access.log \
  && ln -sf /dev/stderr  /var/log/nginx/error.log
+
+USER 1001
