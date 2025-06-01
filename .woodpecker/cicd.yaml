@@ -121,7 +121,7 @@ steps:
         cd infra
         git checkout main
         yq eval -i ".standard-app.apps.bagisto.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/hydrastore/values.yaml"
-        yq eval -i ".standard-app.apps.bagisto-web.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/hydrastore/values.yaml"
+        yq eval -i ".nginx.image.tag=\"${CI_COMMIT_SHA}\"" "kubernetes/helm/apps/hydrastore/values.yaml"
         git config --global user.email "engineering@hydraship.com"
         git config --global user.name "WoodperckerCl[bot]"
         git add "kubernetes/helm/apps/hydrastore/values.yaml"
